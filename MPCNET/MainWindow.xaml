@@ -1,0 +1,51 @@
+﻿<Controls:MetroWindow x:Class="MPCNET.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls" 
+        Title="MainWindow" Height="502.239" Width="999.627">
+    <Grid>
+        <Button Content="Connect" HorizontalAlignment="Left" Margin="907,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
+        <Button Content="Pause" Width="64" Margin="371,0,546,10" VerticalAlignment="Bottom" Click="Button_Click_4"/>
+        <Button Content="Play" Width="64" Margin="451,0,466,10" VerticalAlignment="Bottom" Click="Button_Click_3"/>
+
+
+
+        <Slider x:Name="seekBar" Margin="10,0,20,35" VerticalAlignment="Bottom"/>
+        <Slider Margin="593,41,377,0" VerticalAlignment="Top" Orientation="Vertical" Height="336" Value="100" SmallChange="1" ValueChanged="Slider_ValueChanged" Minimum="50"/>
+        <Label Content="Volume" HorizontalAlignment="Left" Margin="579,10,0,0" VerticalAlignment="Top"/>
+        <TabControl HorizontalAlignment="Left" Height="363" Margin="10,10,0,0" VerticalAlignment="Top" Width="538">
+            <TabItem Header="Local">
+                <Grid>
+                    <Button Content="Stream All" HorizontalAlignment="Left" Margin="10,0,0,283" VerticalAlignment="Bottom" Width="75" Click="Button_Click_5"/>
+                    <Button Content="Stream file" HorizontalAlignment="Left" Margin="10,0,0,239" VerticalAlignment="Bottom" Width="75" Click="Button_Click_8" />
+                    <Button Content="Youtube" HorizontalAlignment="Left" Margin="11,98,0,0" VerticalAlignment="Top" Width="74" Click="Button_Click_9"/>
+                    <TextBox x:Name="youtubeIdBox" HorizontalAlignment="Left" Height="23" Margin="107,98,0,0" TextWrapping="Wrap" Text="Id" VerticalAlignment="Top" Width="120"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Remote">
+                <Grid >
+                    <Label Content="Playlist" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Files" HorizontalAlignment="Left" Margin="270,11,0,0" VerticalAlignment="Top"/>
+                    <Border BorderThickness="1" BorderBrush="Black" Margin="10,37,0,40" Width="200" HorizontalAlignment="Left">
+                        <ListBox x:Name="playlistBox" ItemsSource="{Binding Path=Player.PlayList}" DisplayMemberPath="DisplayName" SelectionChanged="playlistBox_SelectionChanged" Margin="0,0,9,0"/>
+                    </Border>
+                    <Border BorderThickness="1" BorderBrush="Black" Margin="270,37,0,40" Width="200" HorizontalAlignment="Left">
+                        <ListBox x:Name="fileBox" SelectionChanged="fileBox_SelectionChanged"  ItemsSource="{Binding Path=Player.Files}" DisplayMemberPath="DisplayName" Margin="0,0,9,0" MouseDoubleClick="fileBox_MouseDoubleClick"/>
+                    </Border>
+                    <Button Content="Refresh" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="75" Click="Button_Click_6"/>
+                    <Button Content="Clear" HorizontalAlignment="Left" Margin="90,0,0,10" VerticalAlignment="Bottom" Width="75" Click="Button_Click_7" />
+                    <TextBox x:Name="searchBox" HorizontalAlignment="Left" Height="23" Margin="270,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="172" TextChanged="searchBox_TextChanged"/>
+                    <ComboBox x:Name="searchTypeBox" HorizontalAlignment="Left" Margin="447,283,0,0" VerticalAlignment="Top" Width="75" SelectionChanged="ComboBox_SelectionChanged">
+                        <ComboBoxItem>Filename</ComboBoxItem>
+                        <ComboBoxItem>Any</ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Label x:Name="maxTimeLbl" Content="0" HorizontalAlignment="Right" Margin="0,0,20,58" VerticalAlignment="Bottom"/>
+        <Label x:Name="minTimeLbl" Content="0" HorizontalAlignment="Left" Margin="10,0,0,58" VerticalAlignment="Bottom"/>
+        <Label x:Name="currentPlayItemLbl" Content="Paused" Margin="64,0,64,58" VerticalAlignment="Bottom" HorizontalContentAlignment="Center"  TextBlock.TextAlignment="Center"/>
+
+    </Grid>
+</Controls:MetroWindow>
